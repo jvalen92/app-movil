@@ -14,6 +14,7 @@ import { PrincipalPage} from "../pages/principal/principal";
 import { CuentaPage } from "../pages/cuenta/cuenta";
 import { EjerciciosPage } from "../pages/ejercicios/ejercicios";
 import { HacerrutinaPage } from "../pages/hacerrutina/hacerrutina";
+import { UsersProvider } from '../providers/users/users';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HacerrutinaPage } from "../pages/hacerrutina/hacerrutina";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UsersProvider
   ]
 })
 export class AppModule {}
