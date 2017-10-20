@@ -14,5 +14,4 @@ export class UsersProvider {
   constructor(public http: Http) {
     console.log('Hello UsersProvider Provider');
   }
-
 }

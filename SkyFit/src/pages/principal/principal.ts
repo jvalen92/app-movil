@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { HacerrutinaPage } from "../hacerrutina/hacerrutina";
 
 @Component({
@@ -9,6 +9,7 @@ import { HacerrutinaPage } from "../hacerrutina/hacerrutina";
 export class PrincipalPage {
   ejercicio:any =  HacerrutinaPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log("Entramos");
   }
 
 
