@@ -9,7 +9,6 @@ import { HacerrutinaPage } from "../hacerrutina/hacerrutina";
 export class PrincipalPage {
   ejercicio:any =  HacerrutinaPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log("Entramos");
   }
 
 

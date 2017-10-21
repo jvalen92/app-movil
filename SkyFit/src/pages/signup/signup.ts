@@ -3,12 +3,14 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import { InicioPage } from "../inicio/inicio";
+import { LoginPage } from "../login/login";
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
 })
 export class SignupPage {
     inicio:any = InicioPage;
+    public login: LoginPage;
 
     name: string;
     username: string;
@@ -17,6 +19,7 @@ export class SignupPage {
     cpassword: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loadCtrl: LoadingController, private nativeStorage: NativeStorage) {
+    this.login = new LoginPage(navCtrl,navParams,loadCtrl, nativeStorage);
   }
 
   irAtras(){
@@ -48,7 +51,5 @@ export class SignupPage {
     console.log("Error");
   }
 }
-
-
 
 }

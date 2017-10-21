@@ -13,36 +13,31 @@ export class LoginPage {
   password: string;
   correo: string;
   contra: string;
+  paso: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loadCtrl:LoadingController, private nativeStorage: NativeStorage) {
   }
-//Seguir trabajando en esto que es login que tiene problemas porque se sobrescriben cosas
   ir_home(){
-
-    this.nativeStorage.getItem('my-identity-card')
+    this.nativeStorage.getItem('my-identify-card')
     .then(
       data => {
         this.correo = data.email;
-        this.contra = data.password;
+        this.contra= data.password;
+        if(this.correo == this.email && this.contra == this.password){
+          let loader = this.loadCtrl.create({
+            content: "Please wait...",
+            duration: 3000
+            });
+          loader.present();
+              this.navCtrl.setRoot(HomePage);
+        }else{
+          console.error("DATOS INCORRECTOS");
+        }
       },
       error => console.error(error)
     );
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.correo);
-    console.log(this.contra);
-    if(this.correo == this.email && this.contra == this.password){
-    let loader = this.loadCtrl.create({
-  content: "Please wait...",
-  duration: 3000
-  });
-loader.present();
-    this.navCtrl.setRoot(HomePage);
-  }else{
-    console.log("Error");
-    this.navCtrl.setRoot(InicioPage);
   }
-}
+
 
 
 }
