@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SQLite } from '@ionic-native/sqlite';
 import { NativeStorage }  from '@ionic-native/native-storage';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +17,7 @@ import { PrincipalPage} from "../pages/principal/principal";
 import { CuentaPage } from "../pages/cuenta/cuenta";
 import { EjerciciosPage } from "../pages/ejercicios/ejercicios";
 import { HacerrutinaPage } from "../pages/hacerrutina/hacerrutina";
+import { UsersProvider } from "../providers/users/users";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { HacerrutinaPage } from "../pages/hacerrutina/hacerrutina";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -53,6 +56,7 @@ import { HacerrutinaPage } from "../pages/hacerrutina/hacerrutina";
     SplashScreen,
     SQLite,
     NativeStorage,
+    UsersProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

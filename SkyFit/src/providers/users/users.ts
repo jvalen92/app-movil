@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 
 /*
   Generated class for the UsersProvider provider.
@@ -11,7 +10,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsersProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello UsersProvider Provider');
+  constructor(private http: Http) {
+  }
+
+  getUsers() {
+    return this.http.get('https://randomuser.me/api/?results=25');
   }
 }
