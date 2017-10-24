@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from "../../providers/users/users";
 
 @Component({
   selector: 'page-cuenta',
@@ -7,23 +8,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CuentaPage {
 
-  users: any[] = [];
+  users:any[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UsersProvider) {
+    this.getData();
   }
 
-  /*ionViewDidLoad(){
-    this.userprovider.getUsers()
-    .subscribe(
-      (data) => { // Success
-        this.users = data['results'];
-      },
-      (error) =>{
-        console.log("Entre y es un error");
-        console.error(error);
-      }
-    )
-  }*/
+  getData(){
+    this.userService.getUsers().subscribe(data => this.users = data['results']);
+  }
 
 }

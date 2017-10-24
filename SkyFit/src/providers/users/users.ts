@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 /*
   Generated class for the UsersProvider provider.
@@ -10,10 +12,13 @@ import { Http } from '@angular/http';
 @Injectable()
 export class UsersProvider {
 
+  private url : string = 'https://randomuser.me/api/?results=25'; 
   constructor(private http: Http) {
   }
 
   getUsers() {
-    return this.http.get('https://randomuser.me/api/?results=25');
+    return this.http.get(this.url)
+    .do( (res: Response) => console.log(res))
+    .map((res: Response) => res.json());
   }
 }

@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SQLite } from '@ionic-native/sqlite';
 import { NativeStorage }  from '@ionic-native/native-storage';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -34,7 +34,7 @@ import { UsersProvider } from "../providers/users/users";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
