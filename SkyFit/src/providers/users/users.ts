@@ -12,12 +12,19 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class UsersProvider {
 
-  private url : string = 'https://randomuser.me/api/?results=25'; 
+  private url : string = 'https://gentle-mesa-13554.herokuapp.com/ejercicios'; 
+  private url2 : string = 'https://randomuser.me/api/?results=25';
   constructor(private http: Http) {
   }
 
   getUsers() {
     return this.http.get(this.url)
+    .do( (res: Response) => console.log(res))
+    .map((res: Response) => res.json());
+  }
+
+  getLogin(){
+    return this.http.get(this.url2)
     .do( (res: Response) => console.log(res))
     .map((res: Response) => res.json());
   }

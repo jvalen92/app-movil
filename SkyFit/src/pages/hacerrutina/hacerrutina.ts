@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from "../../providers/users/users";
 
 @Component({
   selector: 'page-hacerrutina',
   templateUrl: 'hacerrutina.html',
 })
 export class HacerrutinaPage {
-
-  slides = [
+/*
   {
     title: "Pecho!",
     description: "Hacer este ejercicio de pecho",
@@ -23,9 +23,14 @@ export class HacerrutinaPage {
     description: "Hacer este ejrcicio de hombro",
     image: "http://www.upv.es/adep/imagenes/del1.gif"
   }
-];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  */
+  slides:any[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userService:UsersProvider) {
+    this.getData();
   }
 
+  getData(){
+    this.userService.getUsers().subscribe(data => this.slides = data);
+  }
 
 }

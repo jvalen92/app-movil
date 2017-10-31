@@ -16,7 +16,7 @@ export class CuentaPage {
   }
 
   getData(){
-    this.userService.getUsers().subscribe(data => this.users = data['results']);
+    this.userService.getLogin().subscribe(data => this.users = data['results']);
   }
 
 }
