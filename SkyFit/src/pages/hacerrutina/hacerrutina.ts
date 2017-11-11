@@ -5,6 +5,7 @@ import { UsersProvider } from "../../providers/users/users";
 @Component({
   selector: 'page-hacerrutina',
   templateUrl: 'hacerrutina.html',
+  providers: [UsersProvider]
 })
 export class HacerrutinaPage {
 /*
@@ -31,6 +32,10 @@ export class HacerrutinaPage {
 
   getData(){
     this.userService.getUsers().subscribe(data => this.slides = data);
+  }
+
+  postear(){
+    this.userService.postData().subscribe();
   }
 
 }

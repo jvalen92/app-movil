@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
@@ -27,5 +27,11 @@ export class UsersProvider {
     return this.http.get(this.url2)
     .do( (res: Response) => console.log(res))
     .map((res: Response) => res.json());
+  }
+
+  postData(){
+    //https://gentle-mesa-13554.herokuapp.com/ejercicios
+    return this.http.post('https://gentle-mesa-13554.herokuapp.com/ejercicios',{"nombre":"testeoionic", "musculo":"funcionara"})
+    .map(res => res.json().result);
   }
 }

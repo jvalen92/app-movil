@@ -17,8 +17,14 @@
   
     <ion-slides pager>
     <ion-slide *ngFor="let slide of slides">
-      <h2 [innerHTML]="slide.nombre"></h2>
+      <h2 [innerHTML]="slide.id"></h2>
       <p [innerHTML]="slide.musculo"></p>
     </ion-slide>
   </ion-slides>
+  <button ion-button
+          block
+          color="primary"
+          (click)="postear()">
+    POST
+  </button>
   </ion-content>
