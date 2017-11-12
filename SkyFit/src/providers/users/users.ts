@@ -14,6 +14,7 @@ export class UsersProvider {
 
   private url : string = 'https://gentle-mesa-13554.herokuapp.com/ejercicios'; 
   private url2 : string = 'https://randomuser.me/api/?results=25';
+  private url3 : string = 'https://aqueous-earth-46855.herokuapp.com/rutinas';
   constructor(private http: Http) {
   }
 
@@ -30,8 +31,7 @@ export class UsersProvider {
   }
 
   postData(){
-    //https://gentle-mesa-13554.herokuapp.com/ejercicios
-    return this.http.post('https://gentle-mesa-13554.herokuapp.com/ejercicios',{"nombre":"testeoionic", "musculo":"funcionara"})
+    return this.http.post(this.url3,{"nombre":"secambiodesdeionic"})
     .map(res => res.json().result);
   }
 }

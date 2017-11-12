@@ -3,7 +3,6 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import { HomePage } from "../home/home";
-import { InicioPage } from "../inicio/inicio";
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
