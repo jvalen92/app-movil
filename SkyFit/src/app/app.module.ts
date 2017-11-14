@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -18,6 +19,8 @@ import { CuentaPage } from "../pages/cuenta/cuenta";
 import { EjerciciosPage } from "../pages/ejercicios/ejercicios";
 import { HacerrutinaPage } from "../pages/hacerrutina/hacerrutina";
 import { UsersProvider } from "../providers/users/users";
+import { TimerPage } from "../pages/timer/timer";
+
 
 @NgModule({
   declarations: [
@@ -30,9 +33,11 @@ import { UsersProvider } from "../providers/users/users";
     PrincipalPage,
     CuentaPage,
     EjerciciosPage,
-    HacerrutinaPage
+    HacerrutinaPage,
+    TimerPage
   ],
-  imports: [
+  imports: [ 
+    FormsModule, 
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
@@ -48,8 +53,8 @@ import { UsersProvider } from "../providers/users/users";
     PrincipalPage,
     CuentaPage,
     EjerciciosPage,
-    HacerrutinaPage
-
+    HacerrutinaPage,
+    TimerPage
   ],
   providers: [
     StatusBar,

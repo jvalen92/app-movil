@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UsersProvider } from "../../providers/users/users";
-
+import { TimerPage } from "../timer/timer";
 @Component({
   selector: 'page-hacerrutina',
   templateUrl: 'hacerrutina.html',
@@ -25,6 +25,7 @@ export class HacerrutinaPage {
     image: "http://www.upv.es/adep/imagenes/del1.gif"
   }
   */
+  public timer:any = TimerPage;
   slides:any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private userService:UsersProvider) {
     this.getData();
@@ -34,8 +35,5 @@ export class HacerrutinaPage {
     this.userService.getUsers().subscribe(data => this.slides = data);
   }
 
-  postear(){
-    this.userService.postData().subscribe();
-  }
 
 }
