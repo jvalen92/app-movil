@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { UsersProvider } from "../../providers/users/users";
 
 import { InicioPage } from "../inicio/inicio";
 import { LoginPage } from "../login/login";
@@ -13,28 +14,26 @@ export class SignupPage {
     public login: LoginPage;
 
     name: string;
-    username: string;
-    email: string;
+    id: string;
     password: string;
     cpassword: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadCtrl: LoadingController, private nativeStorage: NativeStorage) {
-    this.login = new LoginPage(navCtrl,navParams,loadCtrl, nativeStorage);
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadCtrl: LoadingController, private nativeStorage: NativeStorage, private usersService:UsersProvider, private event:Events) {
+    this.login = new LoginPage(navCtrl,navParams,loadCtrl, nativeStorage, usersService);
   }
 
   irAtras(){
-    this.nativeStorage.setItem('my-identify-card',{
+    this.nativeStorage.setItem("datos",{
       name:this.name,
-      username: this.username,
-      email: this.email,
       password: this.password,
-      cpassword: this.cpassword
+      cpassword: this.cpassword,
+      id:this.id
     });
     if (this.password == this.cpassword){
       console.log(this.name);
-      console.log(this.username);
-      console.log(this.email);
       console.log(this.password);
+      console.log(this.id);
+      this.usersService.postUser(this.name,this.password,this.id).subscribe(data=> console.log(data));
 
     let loader = this.loadCtrl.create({
       content: "Please wait...",

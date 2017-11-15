@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from "../../providers/users/users";
 
 
 
@@ -12,14 +13,12 @@ export class EjerciciosPage {
   ejercicios:string[];
   searchQuery: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userService:UsersProvider) {
     this.initialize();
   }
 
   initialize(){
-    this.ejercicios = [
-      "pecho", "brazo", "espalda"
-    ];
+    this.userService.getLista().subscribe(data => this.ejercicios = data);
   }
   getItems(ev:any){
     this.initialize();

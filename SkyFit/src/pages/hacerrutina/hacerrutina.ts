@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UsersProvider } from "../../providers/users/users";
 import { TimerPage } from "../timer/timer";
+import { NativeStorage } from '@ionic-native/native-storage';
 @Component({
   selector: 'page-hacerrutina',
   templateUrl: 'hacerrutina.html',
@@ -27,13 +28,29 @@ export class HacerrutinaPage {
   */
   public timer:any = TimerPage;
   slides:any[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userService:UsersProvider) {
+  private dia:string;
+  private id_entrenador:string;
+  private id_usuario:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userService:UsersProvider, private nativeStorage: NativeStorage) {
     this.getData();
   }
 
   getData(){
-    this.userService.getUsers().subscribe(data => this.slides = data);
+    this.nativeStorage.getItem("idusuario")
+    .then(
+      data => {
+        this.id_usuario = data.id;
+        this.nativeStorage.getItem("datos")
+        .then(data=> {
+          this.id_entrenador = data.id;
+          console.log(this.id_entrenador);
+          console.log(this.id_usuario);
+          this.userService.getEjercicios(this.id_usuario,this.id_entrenador).subscribe(data => this.slides = data);
+        });
+      });
+
   }
+
 
 
 }

@@ -10,10 +10,25 @@
   </ion-navbar>
 
 </ion-header>
+
 <ion-content>
+  <ion-list>
+  <ion-item>
+    <ion-label>Days</ion-label>
+    <ion-select [(ngModel)]="dias">
+      <ion-option value="lunes">Lunes</ion-option>
+      <ion-option value="martes">Martes</ion-option>
+      <ion-option value="miercoles">Miercoles</ion-option>
+      <ion-option value="jueves">Jueves</ion-option>
+      <ion-option value="viernes">Viernes</ion-option>
+      <ion-option value="sabado">Sabado</ion-option>
+      <ion-option value="domingo">Domingo</ion-option>
+    </ion-select>
+  </ion-item>
+ </ion-list>
   <button ion-button
           block
-          [navPush]="ejercicio">
+          (click)="ejercicio()">
     Hacer rutina
   </button>
 
